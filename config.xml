@@ -18,14 +18,17 @@
     <platform name="android">
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
+        <allow-intent href="geo:*" />
+        <allow-intent href="http://*/*" />
+        <allow-intent href="https://*/*" />
+        <allow-intent href="tel:*" />
         <icon src="res/android/ldpi.png" density="ldpi" />
         <icon src="www/images/mdpi.png" density="mdpi" />
         <icon src="www/images/hdpi.png" density="hdpi" />
         <icon src="www/images/xhdpi.png" density="xhdpi" />
-        <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-            <string>Necesita acceso a la geolocalización</string>
-        </edit-config>
-        
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -41,7 +44,7 @@
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
    <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
             <string>Necesita acceso a la geolocalización</string>
-        </edit-config>
+    </edit-config>
     
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
         <string>Necesita acceso a la cámara</string>
