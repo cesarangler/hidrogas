@@ -61,10 +61,4 @@
     <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
     <string>Necesita acceso a la localización</string>
 </edit-config>
-<config-file target="AndroidManifest.xml" parent="/manifest/application">
-    <activity android:name="com.hidrogasdecuernavaca.app" android:label="@string/hidrogas">
-        <intent-filter>
-        </intent-filter>
-    </activity>
-</config-file>
 </widget>
