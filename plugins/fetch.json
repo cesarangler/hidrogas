@@ -26,7 +26,7 @@
     "cordova-plugin-camera-master": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-camera-master@~1.0.1"
+            "id": "cordova-plugin-camera-master@~4.0.4-dev"
         },
         "is_top_level": true,
         "variables": {}
