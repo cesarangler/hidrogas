@@ -146,8 +146,8 @@ function geoFindMe() {
   //  output.appendChild(img);
   }
 
-  function error() {
-    output.innerHTML = "No se puede Obtener su ubicación, intente cerca de una ventana o puerta";
+  function error(error) {
+    output.innerHTML = "No se puede Obtener su ubicación"+error;
    //  myApp.alert("Unable to retrieve your location");  
       
   }
