@@ -26,9 +26,6 @@
         <icon src="www/images/mdpi.png" density="mdpi" />
         <icon src="www/images/hdpi.png" density="hdpi" />
         <icon src="www/images/xhdpi.png" density="xhdpi" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
