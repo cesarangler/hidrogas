@@ -40,9 +40,6 @@ version         = "1.0.0"
         <preference name="BackupWebStorage" value="none" />
     </platform>
     <icon src="www/images/hdpi.png" platform="ios" width="72" height="72" density="mdpi" />
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
-    </feature>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <preference name="CameraUsesGeolocation" value="true" />
