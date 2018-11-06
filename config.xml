@@ -18,12 +18,17 @@
     <platform name="android">
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
+        <icon src="res/android/ldpi.png" density="ldpi" />
+              <icon src="www/images/mdpi.png" density="mdpi" />
+              <icon src="www/images/hdpi.png" density="hdpi" />
+              <icon src="www/images/xhdpi.png" density="xhdpi" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
+    <icon src="www/images/hdpi.png" platform="ios" width="72" height="72" density="mdpi" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <preference name="CameraUsesGeolocation" value="false" />
