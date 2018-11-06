@@ -154,7 +154,7 @@ function geoFindMe() {
 
   output.innerHTML = "<p>Obteniendo localización…</p>";
   
-  navigator.geolocation.getCurrentPosition(success, error);
+  navigator.geolocation.getCurrentPosition(success, error, { timeout: 30000 });
     
 }
 
