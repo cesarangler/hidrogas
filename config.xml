@@ -37,7 +37,6 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-    <plugin name="cordova-plugin-camera-master" />
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
         <string>Necesita acceso a la cámara</string>
     </edit-config>
@@ -54,3 +53,8 @@
         <param name="android-package" value="org.apache.cordova.GeoBroker" />
     </feature>
 </widget>
+<config-file platform="android" parent="/manifest" mode="merge">
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+</config-file>
