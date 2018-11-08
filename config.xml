@@ -50,3 +50,9 @@
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>
 </widget>
+<config-file platform="android" parent="/manifest" mode="merge">
+  <supports-screens
+    android:xlargeScreens="false"
+    android:largeScreens="false"
+    android:smallScreens="false" />
+</config-file>
