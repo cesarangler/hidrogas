@@ -153,8 +153,8 @@ function geoFindMe() {
   }
 
   output.innerHTML = "<p>Obteniendo localización…</p>";
-  
-  navigator.geolocation.getCurrentPosition(success, error, { timeout: 30000 });
+  var options = { enableHighAccuracy: true };
+  navigator.geolocation.getCurrentPosition(success, error, options);
     
 }
 
