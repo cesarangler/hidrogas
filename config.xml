@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.hidrogasdecuernavaca.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.hidrogasdecuernavaca.app" 
+        version="1.0.0" 
+        xmlns="http://www.w3.org/ns/widgets" 
+        xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:gap       = "https://phonegap.com/ns/1.0"
+        xmlns:android   = "http://schemas.android.com/apk/res/android"
+        >
     <name>hidrogas</name>
     <description>
         Aplicacion de HidroGas de Cuernavaca.
@@ -18,34 +24,20 @@
     <platform name="android">
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
-        <allow-intent href="geo:*" />
-        <allow-intent href="http://*/*" />
-        <allow-intent href="https://*/*" />
-        <allow-intent href="tel:*" />
-        <icon src="res/android/ldpi.png" density="ldpi" />
-        <icon src="www/images/mdpi.png" density="mdpi" />
-        <icon src="www/images/hdpi.png" density="hdpi" />
-        <icon src="www/images/xhdpi.png" density="xhdpi" />
-        <feature name="Geolocation">
-            <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
-        </feature>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
-    <icon src="www/images/hdpi.png" platform="ios" width="72" height="72" density="mdpi" />
+    
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
-    <preference name="CameraUsesGeolocation" value="true" />
+    <preference name="CameraUsesGeolocation" value="false" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-   <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-            <string>Necesita acceso a la geolocalización</string>
-    </edit-config>
-    
+    <plugin name="cordova-plugin-camera-master" />
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
         <string>Necesita acceso a la cámara</string>
     </edit-config>
@@ -58,7 +50,7 @@
     <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>
-    <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
-    <string>Necesita acceso a la localización</string>
-</edit-config>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.GeoBroker" />
+    </feature>
 </widget>
