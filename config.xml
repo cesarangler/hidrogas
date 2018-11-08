@@ -53,8 +53,3 @@
         <param name="android-package" value="org.apache.cordova.GeoBroker" />
     </feature>
 </widget>
-<config-file platform="android" parent="/manifest" mode="merge">
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-</config-file>
