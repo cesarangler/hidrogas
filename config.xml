@@ -30,6 +30,7 @@
         <allow-intent href="itms-apps:*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
+    
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <preference name="CameraUsesGeolocation" value="false" />
@@ -49,10 +50,12 @@
     <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.GeoBroker" />
+    </feature>
 </widget>
 <config-file platform="android" parent="/manifest" mode="merge">
-  <supports-screens
-    android:xlargeScreens="false"
-    android:largeScreens="false"
-    android:smallScreens="false" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
 </config-file>
