@@ -130,10 +130,11 @@ function geoFindMe() {
       
       
    // output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.7380223722735!2d'+ longitude +'!3d'+ latitude +'!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce7590496bcbc1%3A0x241ceac1db1c6ca1!2s!5e0!3m2!1ses-419!2smx!4v1540924987641" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>';
-       output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p><iframe src="http://maps.google.com/maps?q='+ latitude +', '+ longitude +'&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>';
+      
       $$('.lat_val').val(latitude);
       $$('.long_val').val(longitude);
      
+  //     output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p><iframe src="http://maps.google.com/maps?q='+ latitude +', '+ longitude +'&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>';
       
   //   initmap2(latitude, longitude);  
       
@@ -153,7 +154,7 @@ function geoFindMe() {
   }
 
   output.innerHTML = "<p>Obteniendo localización…</p>";
-  var options = { enableHighAccuracy: true };
+  var options = { enableHighAccuracy: true, timeout:10000 };
   navigator.geolocation.getCurrentPosition(success, error, options);
     
 }
