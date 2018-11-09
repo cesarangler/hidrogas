@@ -22,10 +22,10 @@
     <allow-intent href="geo:*" />
     
     <platform name="android">
-        <icon src="platforms/browser/res/icon/android/icon-36-ldpi.png" density="ldpi" />
-        <icon src="platforms/browser/res/icon/android/icon-48-mdpi.png" density="mdpi" />
-        <icon src="platforms/browser/res/icon/android/icon-72-hdpi.png" density="hdpi" />
-        <icon src="platforms/browser/res/icon/android/icon-96-xhdpi.png" density="xhdpi" />
+<!--        <icon src="www/images/ldpi.png" density="ldpi" />-->
+        <icon src="www/images/mdpi.png" density="mdpi" />
+        <icon src="www/images/hdpi.png" density="hdpi" />
+        <icon src="www/images/xhdpi.png" density="xhdpi" />
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
     </platform>
