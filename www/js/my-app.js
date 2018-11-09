@@ -90,6 +90,7 @@ $$(document).on("click", ".hacer_pedido", function(){
             
         },
         error: function(xhr, status){
+            var output = document.getElementById("out");
             output.innerHTML = 'Error: '+JSON.stringify(xhr)+'ErrorStatus: '+JSON.stringify(status);
             myApp.alert('No se puede enviar la información, verifique su conexión de internet', ' ');
           //  myApp.alert('Error: '+JSON.stringify(xhr));
