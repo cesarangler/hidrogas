@@ -1,14 +1,14 @@
 // Initialize app
-//var myApp = new Framework7();
-var myApp = new Framework7({
-  dialog: {
-    // set default title for all dialog shortcuts
-    title: 'Hidrogas',
-    // change default "OK" button text
-    buttonOk: 'Ok',
-    buttonCancel: 'Cancelar'  
-  }
-});
+var myApp = new Framework7();
+//var myApp = new Framework7({
+//  dialog: {
+//    // set default title for all dialog shortcuts
+//    title: 'Hidrogas',
+//    // change default "OK" button text
+//    buttonOk: 'Ok',
+//    buttonCancel: 'Cancelar'  
+//  }
+//});
 
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
@@ -90,7 +90,7 @@ $$(document).on("click", ".hacer_pedido", function(){
     var validacion = valida(tipo);
 //	alert (validacion);
 	if(validacion){    
-    
+     myApp.showPreloader('Enviando...');
         $$.ajax({
         url: 'https://hidrogasdecuernavaca.com/hidro-data/get.php',
         method: 'POST',
@@ -100,6 +100,7 @@ $$(document).on("click", ".hacer_pedido", function(){
         data: formData,
         success: function(response){
         //    myApp.alert('Datos recibidos : '+response); 
+            myApp.hidePreloader(); 
             mainView.router.loadPage('ty_pedidos.html');
             
         },
@@ -136,31 +137,16 @@ function geoFindMe() {
   function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
-
-//    alert('Latitude: '          + position.coords.latitude          + '\n' +
-//          'Longitude: '         + position.coords.longitude         + '\n' +
-//          'Altitude: '          + position.coords.altitude          + '\n' +
-//          'Accuracy: '          + position.coords.accuracy          + '\n' +
-//          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-//          'Heading: '           + position.coords.heading           + '\n' +
-//          'Speed: '             + position.coords.speed             + '\n' +
-//          'Timestamp: '         + position.timestamp                + '\n');  
       
-      
-   // output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.7380223722735!2d'+ longitude +'!3d'+ latitude +'!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce7590496bcbc1%3A0x241ceac1db1c6ca1!2s!5e0!3m2!1ses-419!2smx!4v1540924987641" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>';
+   // output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
       
       $$('.lat_val').val(latitude);
       $$('.long_val').val(longitude);
      
-       output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p><iframe src="https://maps.google.com/maps?q='+ latitude +', '+ longitude +'&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>';
+       output.innerHTML = '<p>¡Dirección para mapa obtenida!</p><iframe src="https://maps.google.com/maps?q='+ latitude +', '+ longitude +'&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>';
       
-  //   initmap2(latitude, longitude);  
-      
-   // myApp.alert('<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>');  
-
-  //  var img = new Image();
+      //  var img = new Image();
  //   img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
- //   var frame = '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.7380223722735!2d'+ latitude +'!3d'+ longitude +'!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce7590496bcbc1%3A0x241ceac1db1c6ca1!2s!5e0!3m2!1ses-419!2smx!4v1540924987641" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>';
 //    output.innerHTML =  frame; 
   //  output.appendChild(img);
   }
@@ -177,33 +163,6 @@ function geoFindMe() {
     
 }
 
-
-
-function initmap2(glat, glong){
-    var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([glat, glong]),
-          zoom: 4
-        })
-      });
-    
-}
-
-function initMap(glat, glong) {
-  // The location of Uluru
-  var uluru = {lat: glat, lng: glong};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
 
 
 function valida(tipo){
@@ -237,12 +196,21 @@ function valida(tipo){
 // CLICK LEVANTAR PEDIDOS
 $$(document).on("click", ".pedir_factura", function(){
     
-//    var file_data = $$('#FcImage').prop('files')[0];   
+    if ($$('#myImage').prop('files')){
+         var file_data = $$('#myImage').prop('files')[0]; 
+    }else if ($$('#FcImage').prop('files')){
+        var file_data = $$('#FcImage').prop('files')[0]; 
+    }else
+        {
+           var file_data = '';
+        }
+      
     var formData_frm = $$.serializeObject(myApp.formToJSON($$("#factura-form"))); 
-//    formData.append('file', file_data);
+    
     var formData = new FormData();
-   
+    formData.append('file', file_data);
     formData.append('data', formData_frm); 
+    
  //    formData.append('file', file_data); //append file to FormData
     
  //    myApp.alert('Datos : '+formData); 
@@ -250,17 +218,24 @@ $$(document).on("click", ".pedir_factura", function(){
     var validacion = valida_factura(tipo);
 //	alert (validacion);
 	if(validacion){    
-    
+     myApp.showPreloader('Enviando...');
         $$.ajax({
         url: 'https://hidrogasdecuernavaca.com/hidro-data/get.php',
         method: 'POST',
+        processData: false,
+        contentType: false,
+        cache: false,    
     //	dataType: 'json',
     //	contentType: 'application/json',
       //  dataType: 'text',  // what to expect back from the PHP script, if anything
-        data: formData_frm,
+        data: formData,
         success: function(response){
-          //  myApp.alert('Datos recibidos : '+response); 
-            mainView.router.loadPage('ty_facturacion.html');
+            myApp.hidePreloader();  
+             var output = document.getElementById("out");
+            output.innerHTML = 'Response: '+response;
+            
+         //   myApp.alert('Datos recibidos : '+response); 
+        //    mainView.router.loadPage('ty_facturacion.html');
             
         },
         error: function(xhr, status){
@@ -344,7 +319,7 @@ $$(document).on("click", ".hacer_reporte", function(){
     var validacion = valida(tipo);
 
 	if(validacion){    
-    
+     myApp.showPreloader('Enviando...');
         $$.ajax({
         url: 'https://hidrogasdecuernavaca.com/hidro-data/get.php',
         method: 'POST',
@@ -353,6 +328,7 @@ $$(document).on("click", ".hacer_reporte", function(){
         data: formData,
         success: function(response){
         //    myApp.alert('Datos recibidos : '+response); 
+            myApp.hidePreloader(); 
             mainView.router.loadPage('ty_fugas.html');
             
         },
@@ -382,7 +358,7 @@ $$(document).on("click", ".solicita_asesoria", function(){
     var validacion = valida(tipo);
 
 	if(validacion){    
-    
+     myApp.showPreloader('Enviando...');
         $$.ajax({
         url: 'https://hidrogasdecuernavaca.com/hidro-data/get.php',
         method: 'POST',
@@ -391,6 +367,7 @@ $$(document).on("click", ".solicita_asesoria", function(){
         data: formData,
         success: function(response){
         //    myApp.alert('Datos recibidos : '+response); 
+            myApp.hidePreloader(); 
             mainView.router.loadPage('ty_asesoria.html');
             
         },
