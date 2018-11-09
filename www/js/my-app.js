@@ -65,6 +65,20 @@ $$(document).on("click", ".btn_inicio", function(){
     mainView.router.loadPage('index.html');
 });
 
+//      MOSTRAR PROMOCION
+
+/*=== Default standalone ===*/
+var myPhotoBrowserStandalone = myApp.photoBrowser({
+    photos : [
+        'https://hidrogasdecuernavaca.com/promos/promocion-actual.jpg',
+    ]
+});
+
+$$('.pb-promo').on('click', function () {
+    myPhotoBrowserStandalone.open();
+});
+
+
 // CLICK LEVANTAR PEDIDOS
 $$(document).on("click", ".hacer_pedido", function(){
      //   var name  = $$(this).attr("data-name");
