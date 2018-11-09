@@ -82,6 +82,7 @@ $$(document).on("click", ".hacer_pedido", function(){
         method: 'POST',
     //	dataType: 'json',
     //	contentType: 'application/json',
+        cache: false,    
         data: formData,
         success: function(response){
         //    myApp.alert('Datos recibidos : '+response); 
@@ -89,8 +90,10 @@ $$(document).on("click", ".hacer_pedido", function(){
             
         },
         error: function(xhr, status){
-            myApp.alert('Error: '+JSON.stringify(xhr));
-            myApp.alert('ErrorStatus: '+JSON.stringify(status));
+            output.innerHTML = 'Error: '+JSON.stringify(xhr)+'ErrorStatus: '+JSON.stringify(status);
+            myApp.alert('No se puede enviar la información, verifique su conexión de internet', ' ');
+          //  myApp.alert('Error: '+JSON.stringify(xhr));
+        //    myApp.alert('ErrorStatus: '+JSON.stringify(status));
         }
         });
     }  else {
@@ -195,15 +198,15 @@ function valida(tipo){
     
 	 if( $$(".frm_nombre").val() == ""){
          //   $$(".frm_nombre").focus().after("<span class='error'>Ingrese un Nombre</span>");
-          myApp.alert('Ingrese un Nombre '); 
+            myApp.alert('Ingrese un Nombre', ' '); 
             return false;
         }else if( $$(".frm_tel").val() == ""){
        //     $$(".frm_tel").focus().after("<span class='error'>Ingrese un teléfono</span>");
-             myApp.alert('Ingrese un teléfono '); 
+              myApp.alert('Ingrese un teléfono ', ' '); 
             return false;
          }else if( $$(".frm_dir").val() == "" ){
          //   $$(".frm_dir").focus().after("<span class='error'>Ingrese una Dirección</span>");
-             myApp.alert('Ingrese una Dirección');  
+              myApp.alerts('Ingrese una Dirección', ' ');  
             return false;
          }else {return true;}
        
@@ -264,13 +267,13 @@ function valida_factura(tipo){
     
 	 if( $$(".frm_nombre").val() == ""){
          //   $$(".frm_nombre").focus().after("<span class='error'>Ingrese un Nombre</span>");
-          myApp.alert('Ingrese un Nombre o razón social'); 
+          myApp.alert('Ingrese un Nombre o razón social', ' '); 
             return false;
         }else if( $$(".frm_rfc").val() == "" && !rfc_regex.test($$(".frm_rfc").val()) ){
-           myApp.alert("Ingrese un RFC Correcto.");
+           myApp.alert("Ingrese un RFC Correcto.", ' ');
             return false;
          }else if( $$(".frm_mail").val() == "" && !emailreg.test($$(".frm_mail").val()) ){
-           myApp.alert("Ingrese un email Correcto.");
+           myApp.alert("Ingrese un email Correcto.", ' ');
             return false;
          }
 //        else if( $$(".frm_dir").val() == "" ){
