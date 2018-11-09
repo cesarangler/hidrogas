@@ -134,7 +134,7 @@ function geoFindMe() {
       $$('.lat_val').val(latitude);
       $$('.long_val').val(longitude);
      
-  //     output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p><iframe src="http://maps.google.com/maps?q='+ latitude +', '+ longitude +'&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>';
+       output.innerHTML = '<p>Latitude: ' + latitude + '° <br>Longitude: ' + longitude + '°</p><iframe src="http://maps.google.com/maps?q='+ latitude +', '+ longitude +'&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0"></iframe>';
       
   //   initmap2(latitude, longitude);  
       
@@ -158,6 +158,7 @@ function geoFindMe() {
   navigator.geolocation.getCurrentPosition(success, error, options);
     
 }
+
 
 
 function initmap2(glat, glong){
