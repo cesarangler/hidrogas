@@ -3,6 +3,8 @@
         version="1.0.0" 
         xmlns="http://www.w3.org/ns/widgets" 
         xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        xmlns:gap       = "https://phonegap.com/ns/1.0"
+        xmlns:android   = "http://schemas.android.com/apk/res/android"
         >
     <name>Hidrogas Cuernavaca</name>
     <description>
@@ -11,6 +13,16 @@
     <author email="cesar@angler.mx" href="https://angler.mx">
        angler.mx
     </author>
+    <config-file platform="android" parent="/manifest" mode="merge">
+        <uses-permission android:name="android.permission.INTERNET"/>
+        <uses-permission android:name="android.permission.NETWORK_ACCESS" />
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    </config-file>
+    
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -43,6 +55,7 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-camera" />
+    
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
         <string>Necesita acceso a la cámara</string>
     </edit-config>
@@ -61,4 +74,6 @@
     <feature name="Camera">
     <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
 </feature>
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+<feature name="http://api.phonegap.com/1.0/file"/>
 </widget>
