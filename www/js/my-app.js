@@ -30,6 +30,31 @@ $$(document).on('deviceready', function() {
   });
 });
 
+ document.addEventListener("deviceready", function () {                                         
+     alert('deviceready');                                                                       
+                                                                                                
+     function onSuccess(imageData) {                                                             
+          alert('succsess');                                                                      
+          var image = document.getElementById('myImage');                                         
+          image.src = "data:image/jpeg;base64," + imageData;                                      
+     }                                                                                           
+                                                                                                
+     function onFail(message) {                                                                  
+          alert('Failed because: ' + message);                                                    
+     }                                                                                           
+                                                                                                 
+                                                                                                 
+     if(typeof navigator !== 'undefined' && typeof navigator.camera !== 'undefined') {           
+          alert('calling getPicture');                                                            
+          navigator.camera.getPicture(onSuccess, onFail, {                                        
+               sourceType: Camera.PictureSourceType.PHOTOLIBRARY,                                  
+               destinationType: Camera.DestinationType.DATA_URL                                    
+          });                                                                                     
+     } else {                                                                                    
+          alert('no navigator.camera - did you install the plugin?');                                                           
+     }                                                                                           
+                                                                                                
+}, false);
 
 // Now we need to run the code that will be executed only for About page.
 
