@@ -1,14 +1,6 @@
 // Initialize app
 var myApp = new Framework7();
-//var myApp = new Framework7({
-//  dialog: {
-//    // set default title for all dialog shortcuts
-//    title: 'Hidrogas',
-//    // change default "OK" button text
-//    buttonOk: 'Ok',
-//    buttonCancel: 'Cancelar'  
-//  }
-//});
+
 
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
@@ -26,6 +18,8 @@ $$(document).on('deviceready', function() {
     //Inicio para camara
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
+    
+    myApp.alert('Here comes About page'+pictureSource);
     
     $$(document).on('click', function (e) {
     var $t = $$(e.target);
