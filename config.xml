@@ -1,12 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.hidrogasdecuernavaca.app" 
-        version="1.0.0" 
-        xmlns="http://www.w3.org/ns/widgets" 
-        xmlns:cdv="http://cordova.apache.org/ns/1.0"
-        xmlns:gap       = "https://phonegap.com/ns/1.0"
-        xmlns:android   = "http://schemas.android.com/apk/res/android"
-        >
-    <name>hidrogas</name>
+<widget id="com.hidrogas.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Hidrogas_new_cordova</name>
     <description>
         Aplicacion de HidroGas de Cuernavaca.
     </description>
@@ -17,11 +11,15 @@
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
+    <allow-navigation href="http://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
+        <icon density="mdpi" src="www/images/mdpi.png" />
+        <icon density="hdpi" src="www/images/hdpi.png" />
+        <icon density="xhdpi" src="www/images/xhdpi.png" />
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
     </platform>
@@ -30,32 +28,34 @@
         <allow-intent href="itms-apps:*" />
         <preference name="BackupWebStorage" value="none" />
     </platform>
-    
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
     <preference name="CameraUsesGeolocation" value="false" />
-    <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
-    <plugin name="cordova-plugin-console" spec="~1.0.1" />
-    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-    <plugin name="cordova-plugin-camera-master" />
-    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+    <preference name="phonegap-version" value="cli-8.0.0" />
+    <plugin name="cordova-plugin-camera" spec="4.0.3" />
+    <plugin name="cordova-plugin-console" spec="1.0.7" />
+    <plugin name="cordova-plugin-geolocation" spec="2.1.0" />
+    <plugin name="cordova-plugin-statusbar" spec="1.0.1" />
+    <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
         <string>Necesita acceso a la cámara</string>
     </edit-config>
-    <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>
-    <edit-config target="NSLocationWhenInUseUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>Necesita acceso a la localización</string>
     </edit-config>
-    <edit-config target="NSPhotoLibraryAddUsageDescription" file="*-Info.plist" mode="merge">
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>
     <feature name="Geolocation">
         <param name="android-package" value="org.apache.cordova.GeoBroker" />
     </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="http://api.phonegap.com/1.0/camera" />
+    <feature name="http://api.phonegap.com/1.0/file" />
+    <engine name="android" spec="~7.1.0" />
 </widget>
-<config-file platform="android" parent="/manifest" mode="merge">
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-</config-file>

@@ -29,7 +29,7 @@
     
 <div class="page-content">
 <div class="content-block">
-    <img class="logo_hidro_sm" src="images/logo_hidro2.png" /> 
+    <img class="logo_hidro_sm pb-promo" src="images/logo_hidro2.png" /> 
 <h3 style="center">Ingrese sus datos para levantar un pedido</h3>
 </div>
 <form class="list form-store-data" id="pedido-form">
@@ -37,7 +37,7 @@
 <ul class="formstyle">
 <li class="item-content item-input">
 <div class="item-inner">
-<div class="item-title item-label">Nombre Completo</div>
+<div class="item-title item-label">Nombre <br> Completo</div>
 <div class="item-input-wrap">
 <input name="nombre" type="text" class="frm_nombre" placeholder="Escriba su nombre" required validate>
 <span class="input-clear-button"></span>
@@ -82,11 +82,19 @@
 <!-- <p><button class="get_location">Obtener mi locacion</button></p>-->
     <input name="latitude" type="hidden" class="lat_val"  required validate>
     <input name="longitude" type="hidden"  class="long_val" required validate>
-<a href="#" class="list-button item-link button-fill get_location"> Obtener mi ubicación </a>    
-<div id="out"></div>   
+    <br>
+    <div class="col-20">&nbsp;</div>
+    <div class="col-60">
+        
+     <a href="#" class=" button item-link get_location"> Obtener mi ubicación </a> 
+    </div>
+    <div class="col-20">&nbsp;</div>
+    <div style="clear: both;"></div>
+<br>
+   
 </div>
 </li> 
-        
+     <div id="out"></div>   
 <!--    
 <li class="item-content item-input item-input-with-value">
 <div class="item-inner">

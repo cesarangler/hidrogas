@@ -1,0 +1,27 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.hidrogas.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.hidrogas.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.hidrogas.app"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.hidrogas.app"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.hidrogas.app"
+    }
+  },
+  "dependent_plugins": {}
+}
