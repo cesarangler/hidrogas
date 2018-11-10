@@ -24,6 +24,7 @@
 </div>
 <form class="list form-store-data" id="factura-form" enctype="multipart/form-data">
     <input name="button" type="hidden" class="frm_tipo"  value="factura" required validate>
+     <input name="foto_b64" type="hidden" class="frm_foto_b64"  value="" >
 <ul class="formstyle">
 <li class="item-content item-input">
 <div class="item-inner">
@@ -39,7 +40,7 @@
 <div class="item-inner">
 <div class="item-title item-label">RFC</div>
 <div class="item-input-wrap">
-<input name="rfc" type="text" class="frm_rfc" placeholder="Escriba su RFC" required validate pattern="/^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$/" >
+<input name="rfc" type="text" class="frm_rfc" placeholder="Escriba su RFC" required validate onkeyup="this.value = this.value.toUpperCase();" >
 <span class="input-clear-button"></span>
 </div>
 </div>
@@ -76,28 +77,30 @@
 </div>
 </li>     
     
+<!--
 <li class="item-content item-input item-input-with-value">
 <div class="item-inner">
 
-<!--
-<div class="item-title item-label">Subir foto de la nota</div>
-    <br>
--->
 <input class="button button-big button-fill" type='file' id='FcImage'  accept="image/*" capture="camera" >
 
 
 </div>
 </li>
+-->
     
   
 <li class="item-content item-input item-input-with-value">
 <div class="item-inner">
 
-<a href="#" class="list-button item-link button-fill get_picture"> Capturar Foto </a>    
-<img id="myImage" src="" />
+<a href="#" class="list-button item-link button get_picture"> Capturar Foto  </a>
+    <br><br>
+    
+<a href="#" class="list-button item-link button get_photo"> Seleccionar Foto </a>
 </div>
 </li>
-    
+    <img id="myImage" src="" />
+    <img style="" class="" id="Recibo_img" src="" />
+     <img style="display:none;width:50%; margin-left: 25%;" id="smallImage" src="" />
     <div id="out"></div> 
     
 
