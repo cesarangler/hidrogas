@@ -20,7 +20,7 @@
         <icon density="mdpi" src="www/images/mdpi.png" />
         <icon density="hdpi" src="www/images/hdpi.png" />
         <icon density="xhdpi" src="www/images/xhdpi.png" />
-        <preference name="android-minSdkVersion" value="14" />
+        <preference name="android-minSdkVersion" value="16" />
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
