@@ -23,6 +23,10 @@ var mainView = myApp.addView('.view-main', {
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
     
+    //Inicio para camara
+    pictureSource=navigator.camera.PictureSourceType;
+    destinationType=navigator.camera.DestinationType;
+    
     $$(document).on('click', function (e) {
     var $t = $$(e.target);
     if ( $t.is('a') && $t.hasClass('external') ) {
@@ -193,10 +197,21 @@ function valida(tipo){
 //
 
 
-// CLICK LEVANTAR PEDIDOS
+// CLICK SOLICITAR FACTURA
 $$(document).on("click", ".pedir_factura", function(){
     
-    if ($$('#myImage').prop('files')){
+    
+    
+ //    formData.append('file', file_data); //append file to FormData
+    
+   //  myApp.alert('Datos : '+formData); 
+    var tipo = $$('.frm_tipo').val();
+    var validacion = valida_factura(tipo);
+//	alert (validacion);
+	if(validacion){    
+     myApp.showPreloader('Procesando imagen y enviando datos...');
+        
+        if ($$('#myImage').prop('files')){
          var file_data = $$('#myImage').prop('files')[0]; 
     }else if ($$('#FcImage').prop('files')){
         var file_data = $$('#FcImage').prop('files')[0]; 
@@ -204,21 +219,18 @@ $$(document).on("click", ".pedir_factura", function(){
         {
            var file_data = '';
         }
+    var img = document.getElementById('Recibo_img');
+    var file_base =getBase64Image(img);
+ //   var file_img = img.files[0];
       
     var formData_frm = $$.serializeObject(myApp.formToJSON($$("#factura-form"))); 
     
     var formData = new FormData();
     formData.append('file', file_data);
+    formData.append('foto', file_base); 
     formData.append('data', formData_frm); 
-    
- //    formData.append('file', file_data); //append file to FormData
-    
- //    myApp.alert('Datos : '+formData); 
-    var tipo = $$('.frm_tipo').val();
-    var validacion = valida_factura(tipo);
-//	alert (validacion);
-	if(validacion){    
-     myApp.showPreloader('Enviando...');
+        
+        
         $$.ajax({
         url: 'https://hidrogasdecuernavaca.com/hidro-data/get.php',
         method: 'POST',
@@ -231,11 +243,9 @@ $$(document).on("click", ".pedir_factura", function(){
         data: formData,
         success: function(response){
             myApp.hidePreloader();  
-             var output = document.getElementById("out");
-            output.innerHTML = 'Response: '+response;
-            
-         //   myApp.alert('Datos recibidos : '+response); 
-        //    mainView.router.loadPage('ty_facturacion.html');
+        //     var output = document.getElementById("out");
+        //    output.innerHTML = 'Response: '+response;
+            mainView.router.loadPage('ty_facturacion.html');
             
         },
         error: function(xhr, status){
@@ -247,6 +257,43 @@ $$(document).on("click", ".pedir_factura", function(){
       //   myApp.alert('Favor de ingresar todos los datos requeridos'); 
     }  
 });
+
+function getBase64Image(img) {
+  // Create an empty canvas element
+  var canvas = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+
+  // Copy the image contents to the canvas
+  var ctx = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+
+  // Get the data-URL formatted image
+  // Firefox supports PNG and JPEG. You could check img.src to
+  // guess the original format, but be aware the using "image/jpg"
+  // will re-encode the image.
+  var dataURL = canvas.toDataURL("image/png");
+
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+function encodeImagetoBase64(element) {
+
+	  var file = element.files[0];
+
+	  var reader = new FileReader();
+
+	  reader.onloadend = function() {
+
+	    $(".link").attr("href",reader.result);
+
+	    $(".link").text(reader.result);
+
+	  }
+
+	  reader.readAsDataURL(file);
+
+	}
 
 
 function valida_factura(tipo){
@@ -276,32 +323,47 @@ function valida_factura(tipo){
 }
 $$(document).on("click", ".get_picture", function(){
     navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
-    destinationType: Camera.DestinationType.FILE_URI });
+    destinationType: Camera.DestinationType.DATA_URL,
+    sourceType : Camera.PictureSourceType.CAMERA,
+    encodingType : Camera.EncodingType.JPEG});
  //   getImage();
 });
-function onSuccess() {
-    myApp.alert("Camera cleanup success..");
-    var image = document.getElementById('myImage');
-    image.src = imageURI;
+$$(document).on("click", ".get_photo", function(){
+    getPhoto(pictureSource.PHOTOLIBRARY);
+ //   getImage();
+});
+
+
+function onSuccess(imageData) {
+  //  myApp.alert("Camera cleanup success..");
+ //   var image = document.getElementById('myImage');
+//    image.src = imageURI;
+    //    var largeImage = document.getElementById('Recibo_img');
+     //   largeImage.style.display = 'block';
+      //  largeImage.src = imageData;
+        var smallImage = document.getElementById('smallImage');
+        smallImage.style.display = 'block';
+        smallImage.src = "data:image/jpeg;base64," + imageData;
+    //    var image_frm = document.getElementById('Foto_up');
+        $$(".frm_foto_b64").val(imageData);
 }
 
 function onFail(message) {
-     myApp.alert('Failed because: ' + message);
+     myApp.alert('No se seleccionó ninguna imágen ', ' ');
 }
 
 
-function getImage() {
-    // Retrieve image file location from specified source
-    navigator.camera.getPicture(uploadPhoto, function(message) {
-                alert('get picture failed');
-            },{
-                quality: 50,
-                destinationType: navigator.camera.DestinationType.FILE_URI,
-                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-            }
-    );
 
-}
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onSuccess, onFail, { quality: 50, 
+        destinationType: destinationType.DATA_URL,
+        sourceType: source });
+        
+    }
+
 
 
 //
