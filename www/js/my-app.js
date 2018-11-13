@@ -18,7 +18,7 @@ $$(document).on('deviceready', function() {
     //Inicio para camara
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
-    
+    console.log(navigator.camera);
     
     $$(document).on('click', function (e) {
     var $t = $$(e.target);
@@ -30,31 +30,27 @@ $$(document).on('deviceready', function() {
 });
 
 
-// Now we need to run the code that will be executed only for About page.
-
-// Option 1. Using page callback for page (for "about" page in this case) (recommended way):
-myApp.onPageInit('pedidos', function (page) {
-    // Do something here for "about" page
-})
-
-// Option 2. Using one 'pageInit' event handler for all pages:
 $$(document).on('pageInit', function (e) {
     // Get page data from event data
     var page = e.detail.page;
 
-    if (page.name === 'pedidos') {
-        // Following code will be executed for page with data-page attribute equal to "about"
-       // myApp.alert('Here comes About page');
-        //  myApp.alert('Here comes Pedidos page');
- //   initmap2('18.8988847','-99.1774249');
+    if (page.name === 'facturacion') {
+        var device = myApp.device.os; 
+        switch(device){ 
+            case 'ios': 
+                $$("#android").hide(); 
+                $$("#ios").show(); 
+                break; 
+            case 'android': 
+                $$("#android").show(); 
+                $$("#ios").hide(); 
+                break; 
+            default: 
+                $$("#android").hide(); $$("#ios").hide(); }
+        
     }
 })
 
-// Option 2. Using live 'pageInit' event handlers for each page
-$$(document).on('pageInit', '.page[data-page="about"]', function (e) {
-    // Following code will be executed for page with data-page attribute equal to "about"
-    myApp.alert('Here comes About page');
-})
 
 //VOLVER A INICIO
 
@@ -315,6 +311,7 @@ function valida_factura(tipo){
 		
 }
 $$(document).on("click", ".get_picture", function(){
+   // myApp.alert('Camera start');  
     navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.DATA_URL,
     sourceType : Camera.PictureSourceType.CAMERA,
