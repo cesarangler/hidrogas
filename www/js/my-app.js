@@ -1,7 +1,6 @@
 // Initialize app
 var myApp = new Framework7();
 
-
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
@@ -19,6 +18,7 @@ $$(document).on('deviceready', function() {
     pictureSource=navigator.camera.PictureSourceType;
     destinationType=navigator.camera.DestinationType;
     console.log(navigator.camera);
+    
     
     $$(document).on('click', function (e) {
     var $t = $$(e.target);
@@ -49,6 +49,9 @@ $$(document).on('pageInit', function (e) {
                 $$("#android").hide(); $$("#ios").hide(); }
         
     }
+    
+   
+    
 })
 
 
@@ -60,14 +63,14 @@ $$(document).on("click", ".btn_inicio", function(){
 
 //      MOSTRAR PROMOCION
 
-/*=== Default standalone ===*/
+          /*=== Default standalone ===*/
 var myPhotoBrowserStandalone = myApp.photoBrowser({
     photos : [
-        'https://hidrogasdecuernavaca.com/promos/promocion-actual.jpg',
-    ]
-});
+            'https://hidrogasdecuernavaca.com/promos/promocion-actual.jpg'
+        ]
+    });
 
-$$('.pb-promo').on('click', function () {
+$$(document).on("click", ".pb-promo", function(){
     myPhotoBrowserStandalone.open();
 });
 
