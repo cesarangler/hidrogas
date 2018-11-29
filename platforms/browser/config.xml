@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.hidrogas.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Hidrogas_new_cordova</name>
+<widget id="com.hidrogas.app" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Hidrogas Cuernavaca</name>
     <description>
-        Aplicacion de HidroGas de Cuernavaca.
+        App de HidroGas de Cuernavaca para hacer pedidos de gas, reportar fugas, solicitar facturas y asesoría.
     </description>
     <author email="cesar@angler.mx" href="https://angler.mx">
        angler.mx
@@ -30,6 +30,6 @@
     </edit-config>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
-    <preference name="CameraUsesGeolocation" value="false" />
+    <preference name="CameraUsesGeolocation" value="true" />
     <preference name="phonegap-version" value="cli-8.0.0" />
 </widget>

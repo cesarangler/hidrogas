@@ -490,7 +490,7 @@ li.list-group-title:before {
   padding: 0 15px;
   text-align: center;
   color: #007aff;
-  line-height: 44px;
+/*  line-height: 44px;*/
 }
 .ios .list .item-content {
   min-height: 44px;
@@ -1897,6 +1897,7 @@ box-sizing: border-box;
 
 .logo_hidro { width: 90%; margin: 0px 5% 10px 5%; opacity: 0.8;  }
 .logo_hidro_sm { width: 60%; margin: 10px 20%; opacity: 0.8;  }
+.logo_hidro_smlr { width: 40%; margin: 10px 30%; opacity: 0.8;  }
 .bttns_hidro {width: 80%; margin: 20px 10%;}
 .btns_hridro_wapp {width: 80%; margin: 0px 10% 0px 10%;}
 .bttns_hidro:after {

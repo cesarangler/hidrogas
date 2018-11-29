@@ -70,8 +70,8 @@
 <span class="input-clear-button"></span>
 </div>
 </div>
-</li>    
- 
+</li>   
+
 <li class="item-content item-input">
 <div class="item-inner">
 <div class="item-title item-label">E-mail</div>
@@ -101,18 +101,64 @@
 <span class="input-clear-button"></span>
 </div>
 </div>
+</li> 
+<li class="item-content item-input">
+<div class="item-inner">
+<div class="item-title item-label">Forma de Pago</div>
+<div class="item-input-wrap">
+
+<select id="FormaPago"  name="FormaPago" aria-invalid="false">
+    <option value="01 Efectivo" selected>01 Efectivo</option>
+    <option value="02 Cheque Nominativo" >02 Cheque Nominativo</option>
+    <option value="03 Transferencia electrónica de fondos (incluye SPEI)" >03 Transferencia electrónica de fondos (incluye SPEI)</option>
+    <option value="04 Tarjeta de crédito" >04 Tarjeta de crédito</option>
+    <option value="05 Monedero electrónico" >05 Monedero electrónico</option>
+    <option value="06 Dinero electrónico">06 Dinero electrónico</option>
+    <option value="08 Vales de despensa" >08 Vales de despensa</option>
+    <option value="12 Dación en pago" >12 Dación en pago</option>
+    <option value="13 Pago por subrogación">13 Pago por subrogación</option>
+    <option value="14 Pago por consignación" >14 Pago por consignación</option>
+    <option value="15 Condonación" >15 Condonación</option>
+    <option value="17 Compensación" >17 Compensación</option>
+    <option value="23 Novación" >23 Novación</option>
+    <option value="24 Confusión">24 Confusión</option>
+    <option value="25 Remisión de deuda" >25 Remisión de deuda</option>
+    <option value="26 Prescripción o caducidad" >26 Prescripción o caducidad</option>
+    <option value="27 A satisfacción del acreedor">27 A satisfacción del acreedor</option>
+    <option value="28 Tarjeta de débito" >28 Tarjeta de débito</option>
+    <option value="29 Tarjeta de servicios">29 Tarjeta de servicios</option>
+    <option value="30 Aplicación de anticipos">30 Aplicación de anticipos</option>
+    <option value="31 Intermediario pagos">31 Intermediario pagos</option>
+    <option value="99 Por definir">99 Por definir</option>
+</select>
+<span class="input-clear-button"></span>
+</div>
+</div>
+</li>    
+
+<li class="item-content item-input" id="cuenta_b">
+<div class="item-inner">
+<div class="item-title item-label">Cuenta Bancaria</div>
+<div class="item-input-wrap">
+<input name="cuenta" type="text" class="frm_series_folio" placeholder="Anote los ultimos 4 dígitos">
+<span class="input-clear-button"></span>
+</div>
+</div>
 </li>     
     
 <li class="item-content item-input item-input-with-value">
 <div id="ios" class="item-inner">
-
-<input class="button button-big button-fill" type='file' id='FcImage'  accept="image/*" >
-
+    
+<!--<a href="#" class="list-button item-link button" for="FcImage"> Seleccionar Foto </a>-->
+<!--<input class="button button-big button-fill" style="visibility:hidden;" type='file' id='FcImage'  accept="image/*" >-->
+<label for="FcImage" class="list-button item-link button"><i class="f7-icons size-14">camera</i> / <i class="f7-icons size-14">photos</i>  Seleccionar Foto </label>
+<input type='file' id='FcImage'  accept="image/*" >
 
 </div>
 </li>
     
   
+<!--
 <li class="item-content item-input item-input-with-value">
 <div id="android" class="item-inner">
 
@@ -122,6 +168,37 @@
 <a href="#" class="list-button item-link button get_photo"> Seleccionar Foto </a>
 </div>
 </li>
+-->
+    
+    
+<li class="item-content item-input item-input-with-value">
+<div id="android" class="item-inner">
+<div class="row">
+    <div class="col-50">
+        <a href="#" class="list-button item-link button get_picture"><i class="f7-icons size-14">camera</i> Capturar Foto</a></div>
+    <div class="col-50">
+        <a href="#" class="list-button item-link button get_photo"><i class="f7-icons size-14">photos</i> Seleccionar Foto</a>
+    </div>
+</div>
+    
+
+</div>
+</li>
+    
+        
+<!--
+<li class="item-content item-input item-input-with-value">
+<div id="android2" class="item-inner">
+<div class="row">
+    <div class="col-50">
+        <a href="#" class="list-button item-link button get_picture"><i class="f7-icons size-14">camera</i> Capturar Foto 2</a></div>
+    <div class="col-50">
+        <a href="#" class="list-button item-link button get_photo"><i class="f7-icons size-14">photos</i> Seleccionar Foto 2</a>
+    </div>
+</div>
+</div>
+</li>
+-->
     <img id="myImage" src="" />
     <img style="" class="" id="Recibo_img" src="" />
      <img style="display:none;width:50%; margin-left: 25%;" id="smallImage" src="" />

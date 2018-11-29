@@ -39,14 +39,20 @@ $$(document).on('pageInit', function (e) {
         switch(device){ 
             case 'ios': 
                 $$("#android").hide(); 
+            //    $$("#android2").hide(); 
                 $$("#ios").show(); 
                 break; 
             case 'android': 
+            //    $$("#android2").show(); 
                 $$("#android").show(); 
                 $$("#ios").hide(); 
                 break; 
             default: 
-                $$("#android").hide(); $$("#ios").hide(); }
+              //  $$("#android2").hide(); 
+                $$("#android").hide(); 
+                $$("#ios").hide(); }
+        $$("#FcImage").hide();
+         $$("#cuenta_b").hide();
         
     }
     
@@ -188,6 +194,29 @@ function valida(tipo){
 //
 //
 
+
+ // Selecciona Imagen en iphone
+$$(document).on("change", "#FcImage", function(){
+ //   mainView.router.loadPage('index.html');
+    $$("#FcImage").show();
+});
+
+//CAMBIA FORMA DE PAGO
+$$(document).on("change", "#FormaPago", function(){
+ //   mainView.router.loadPage('index.html');
+    if ($$(this).val() == '02 Cheque Nominativo'){
+        $$("#cuenta_b").show(); 
+    }else if ($$(this).val() == '03 Transferencia electrónica de fondos (incluye SPEI)'){
+        $$("#cuenta_b").show(); 
+    }else if ($$(this).val() == '28 Tarjeta de débito'){
+        $$("#cuenta_b").show(); 
+    }else if ($$(this).val() == '04 Tarjeta de crédito'){
+        $$("#cuenta_b").show(); 
+    }else{
+        $$("#cuenta_b").hide();
+    }
+    
+});
 
 // CLICK SOLICITAR FACTURA
 $$(document).on("click", ".pedir_factura", function(){
