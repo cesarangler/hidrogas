@@ -21,9 +21,9 @@
         <icon density="mdpi" src="www/images/mdpi.png" />
         <icon density="hdpi" src="www/images/hdpi.png" />
         <icon density="xhdpi" src="www/images/xhdpi.png" />
-        <splash src="www/images/load.jpg" platform="android" qualifier="mdpi" />
-        <splash src="www/images/load.jpg" platform="android" qualifier="hdpi" />
-        <splash src="www/images/load.jpg" platform="android" qualifier="xhdpi" />
+        <splash src="www/images/load.png" platform="android" qualifier="mdpi" />
+        <splash src="www/images/load.png" platform="android" qualifier="hdpi" />
+        <splash src="www/images/load.png" platform="android" qualifier="xhdpi" />
         <preference name="android-minSdkVersion" value="16" />
         <allow-intent href="market:*" />
     </platform>
@@ -43,7 +43,7 @@
         <icon height="40" platform="ios" src="www/images/ios/icon-40.png" width="40" />
         <icon height="80" platform="ios" src="www/images/ios/icon-40@2x.png" width="80" />
         <icon height="120" platform="ios" src="www/images/ios/icon-40@3x.png" width="120" />
-        <splash src="www/images/load.jpg" platform="ios" />
+        <splash src="www/images/load.png" platform="ios" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />
