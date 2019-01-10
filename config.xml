@@ -63,8 +63,11 @@
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
-        <string>Necesita acceso a la localización</string>
-    </edit-config>
+   <string>Necesita acceso a la localización</string>
+</edit-config>
+<edit-config file="*-Info.plist" mode="merge" target="NSLocationAlwaysUsageDescription">
+   <string>Necesita acceso a la localización</string>
+</edit-config>
     <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
         <string>Necesita acceso a la librería de fotos</string>
     </edit-config>

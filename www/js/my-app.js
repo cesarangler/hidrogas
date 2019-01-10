@@ -122,13 +122,9 @@ $$(document).on("click", ".hacer_pedido", function(){
 
 // CLICK LEVANTAR PEDIDOS
 $$(document).on("click", ".get_location", function(){
-      geoFindMe();
+    //  geoFindMe();
     //    findme2();
-});
-
-
-function geoFindMe() {
-  var output = document.getElementById("out");
+      var output = document.getElementById("out");
 
   if (!navigator.geolocation){
     output.innerHTML = "<p>Este dispositivo no soporta geolocalización</p>";
@@ -136,6 +132,10 @@ function geoFindMe() {
     return;
   }
 
+output.innerHTML = "<p>Obteniendo localización…</p>";
+  var options = { enableHighAccuracy: true, timeout:10000 };
+  navigator.geolocation.getCurrentPosition(success, error, options);    
+    
   function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
@@ -154,14 +154,16 @@ function geoFindMe() {
   }
 
   function error(error) {
-    output.innerHTML = "No se puede Obtener su ubicación"+error;
+    output.innerHTML = "No se puede Obtener su ubicación"+error.code+" - "+error.message;
    //  myApp.alert("Unable to retrieve your location");  
       
   }
+    
+});
 
-  output.innerHTML = "<p>Obteniendo localización…</p>";
-  var options = { enableHighAccuracy: true, timeout:10000 };
-  navigator.geolocation.getCurrentPosition(success, error, options);
+
+function geoFindMe() {
+
     
 }
 
@@ -322,6 +324,7 @@ function valida_factura(tipo){
 	  
     var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
      var rfc_regex = /^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$/;
+     var device = myApp.device.os; 
     
 	 if( $$(".frm_nombre").val() == ""){
          //   $$(".frm_nombre").focus().after("<span class='error'>Ingrese un Nombre</span>");
@@ -334,10 +337,14 @@ function valida_factura(tipo){
            myApp.alert("Ingrese un email Correcto.", ' ');
             return false;
          }
-//        else if( $$(".frm_dir").val() == "" ){
-//             myApp.alert('Ingrese una Dirección');  
-//            return false;
-//         }
+        else if( $$(".frm_foto_b64").val() == "" && device == 'android' ){
+             myApp.alert("Debe añadir una foto o imágen de su ticket.", ' ');
+            return false;
+         }
+        else if( $$(".FcImagec").val() == "" && device == 'ios' ){
+             myApp.alert("Debe añadir una foto o imágen de su ticket.", ' ');
+            return false;
+         }
     else {return true;}
        
 		

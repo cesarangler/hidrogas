@@ -1,0 +1,32 @@
+{
+  "name": "com.hidrogas.app",
+  "version": "1.0.0",
+  "displayName": "Hidrogas_new_cordova",
+  "cordova": {
+    "platforms": [
+      "android",
+      "browser",
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-camera": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-ios-camera-permissions": {},
+      "cordova-plugin-media-capture": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "~7.1.0",
+    "cordova-browser": "^5.0.4",
+    "cordova-ios": "^4.4.0",
+    "cordova-plugin-camera": "4.0.3",
+    "cordova-plugin-console": "1.0.7",
+    "cordova-plugin-geolocation": "2.1.0",
+    "cordova-plugin-ios-camera-permissions": "1.0.3",
+    "cordova-plugin-statusbar": "1.0.1",
+    "cordova-plugin-whitelist": "1.2.2"
+  }
+}
